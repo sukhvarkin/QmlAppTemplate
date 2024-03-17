@@ -7,7 +7,6 @@
         <file alias="DesktopSidebarItem.qml">components_generic/DesktopSidebarItem.qml</file>
         <file alias="MobileMenuItem_horizontal.qml">components_generic/MobileMenuItem_horizontal.qml</file>
         <file alias="MobileMenuItem_vertical.qml">components_generic/MobileMenuItem_vertical.qml</file>
-
         <file alias="ActionMenu_bottom.qml">components_generic/ActionMenu_bottom.qml</file>
         <file alias="ActionMenu_floating.qml">components_generic/ActionMenu_floating.qml</file>
         <file alias="ActionMenuItem.qml">components_generic/ActionMenuItem.qml</file>
@@ -39,7 +38,6 @@
         <file alias="SliderArrow.qml">components_generic/SliderArrow.qml</file>
         <file alias="SliderValueSolid.qml">components_generic/SliderValueSolid.qml</file>
         <file alias="ToolTipFlat.qml">components_generic/ToolTipFlat.qml</file>
-
         <file alias="DrawerItem.qml">components_generic/DrawerItem.qml</file>
         <file alias="DrawerButton.qml">components_generic/DrawerButton.qml</file>
         <file alias="ListItem.qml">components_generic/ListItem.qml</file>
@@ -47,16 +45,13 @@
         <file alias="ListSeparator.qml">components_generic/ListSeparator.qml</file>
         <file alias="ListSeparatorPadded.qml">components_generic/ListSeparatorPadded.qml</file>
         <file alias="ListTitle.qml">components_generic/ListTitle.qml</file>
-
         <file alias="AndroidButton.qml">components_generic/AndroidButton.qml</file>
         <file alias="AndroidButtonIcon.qml">components_generic/AndroidButtonIcon.qml</file>
         <file alias="AndroidTextField.qml">components_generic/AndroidTextField.qml</file>
-
         <file alias="FrameBox.qml">components_generic/FrameBox.qml</file>
         <file alias="FrameThemed.qml">components_themed/FrameThemed.qml</file>
         <file alias="GroupBoxThemed.qml">components_themed/GroupBoxThemed.qml</file>
         <file alias="PaneThemed.qml">components_themed/PaneThemed.qml</file>
-
         <file alias="ButtonIconThemed.qml">components_themed/ButtonIconThemed.qml</file>
         <file alias="ButtonThemed.qml">components_themed/ButtonThemed.qml</file>
         <file alias="CheckBoxThemed.qml">components_themed/CheckBoxThemed.qml</file>
@@ -69,7 +64,6 @@
         <file alias="ProgressBarThemed.qml">components_themed/ProgressBarThemed.qml</file>
         <file alias="RadioButtonThemed.qml">components_themed/RadioButtonThemed.qml</file>
         <file alias="RangeSliderThemed.qml">components_themed/RangeSliderThemed.qml</file>
-        <file alias="RippleThemed.qml">components_themed/RippleThemed.qml</file>
         <file alias="RoundButtonThemed.qml">components_themed/RoundButtonThemed.qml</file>
         <file alias="RoundButtonIconThemed.qml">components_themed/RoundButtonIconThemed.qml</file>
         <file alias="ScrollBarThemed.qml">components_themed/ScrollBarThemed.qml</file>
@@ -84,8 +78,8 @@
         <file alias="TextEditThemed.qml">components_themed/TextEditThemed.qml</file>
         <file alias="TextFieldThemed.qml">components_themed/TextFieldThemed.qml</file>
         <file alias="TumblerThemed.qml">components_themed/TumblerThemed.qml</file>
+        <file alias="FpsMonitor.qml">components_generic/FpsMonitor.qml</file>
     </qresource>
-
     <qresource prefix="/js">
         <file alias="UtilsNumber.js">components_js/UtilsNumber.js</file>
         <file alias="UtilsPath.js">components_js/UtilsPath.js</file>

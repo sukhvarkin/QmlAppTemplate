@@ -14,7 +14,7 @@ Item {
 
     Rectangle {
         anchors.fill: rowrow
-        color: "black"
+        color: "transparent"
         opacity: 0.8
     }
 

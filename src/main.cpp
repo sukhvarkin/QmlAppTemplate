@@ -1,33 +1,10 @@
-/*!
- * COPYRIGHT (C) 2022 Emeric Grange - All Rights Reserved
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * \date      2022
- * \author    Emeric Grange <emeric.grange@gmail.com>
- */
-
 #include "SettingsManager.h"
 
 #include <utils_app.h>
 #include <utils_screen.h>
 #include <utils_sysinfo.h>
 #include <utils_language.h>
-#include <utils_os_macos_dock.h>
 
-#include <MobileUI>
-#include <MobileSharing>
 #include <SingleApplication>
 
 #include <QtGlobal>
@@ -57,8 +34,8 @@ int main(int argc, char *argv[])
     // Application name
     app.setApplicationName("QmlAppTemplate");
     app.setApplicationDisplayName("QmlAppTemplate");
-    app.setOrganizationName("IPG Photonics");
-    app.setOrganizationDomain("ipg");
+    app.setOrganizationName("emeric");
+    app.setOrganizationDomain("emeric");
 
     QIcon appIcon(":/assets/logos/logo.svg");
     app.setWindowIcon(appIcon);
@@ -89,8 +66,6 @@ int main(int argc, char *argv[])
     // ThemeEngine
     qmlRegisterSingletonType(QUrl("qrc:/qml/ThemeEngine.qml"), "ThemeEngine", 1, 0, "Theme");
 
-
-    MobileUI::registerQML();
 
     // Then we start the UI
     QQmlApplicationEngine engine;

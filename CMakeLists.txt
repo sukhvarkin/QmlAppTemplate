@@ -46,14 +46,6 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC src/thirdparty/)
 add_subdirectory(src/thirdparty/AppUtils)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE AppUtils)
 
-# MobileUI
-add_subdirectory(src/thirdparty/MobileUI)
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE MobileUI)
-
-# MobileSharing
-add_subdirectory(src/thirdparty/MobileSharing)
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE MobileSharing)
-
 # SingleApplication
 set(QAPPLICATION_CLASS QGuiApplication)
 add_subdirectory(src/thirdparty/SingleApplication)
@@ -110,14 +102,3 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
     LIBRARY DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-
-#qt_generate_deploy_qml_app_script(
-#    TARGET ${CMAKE_PROJECT_NAME}
-#    OUTPUT_SCRIPT deploy_script
-#    NO_UNSUPPORTED_PLATFORM_ERROR
-#    DEPLOY_USER_QML_MODULES_ON_UNSUPPORTED_PLATFORM
-#    MACOS_BUNDLE_POST_BUILD
-#)
-#install(SCRIPT ${deploy_script})
-
-################################################################################

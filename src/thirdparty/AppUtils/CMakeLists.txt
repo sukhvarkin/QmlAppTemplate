@@ -9,17 +9,16 @@ set(CMAKE_AUTOMOC ON)
 ################################################################################
 
 if(NOT QT_DEFAULT_MAJOR_VERSION)
-    set(QT_DEFAULT_MAJOR_VERSION 5 CACHE STRING "Qt version to use (5 or 6), defaults to 6")
+    set(QT_DEFAULT_MAJOR_VERSION 5 CACHE STRING "Qt version to use (5 or 6), defaults to 5")
 endif()
 
 # Generic dependencies
 set(CORE_COMPONENTS Core Gui Qml Quick)
-find_package(Qt${QT_DEFAULT_MAJOR_VERSION} REQUIRED COMPONENTS ${CORE_COMPONENTS})
+find_package(Qt5 REQUIRED COMPONENTS ${CORE_COMPONENTS})
 
 set(CORE_LIBRARIES
     Qt::Core
     Qt::Gui
-#    Qt::GuiPrivate
     Qt::Qml
     Qt::Quick
 )
@@ -42,10 +41,12 @@ set(CORE_SOURCES
     utils_screen.h
     utils_sysinfo.cpp
     utils_sysinfo.h
-    utils_versionchecker.h)
+    utils_versionchecker.h
+    utils_qmlregistor.h)
 
 # OS specific sources & dependencies
 if(CMAKE_SYSTEM_NAME STREQUAL Linux)
+
 if(NOT ANDROID)
     set(PLATFORM_SOURCES
         utils_os_linux.cpp
@@ -56,53 +57,12 @@ if(NOT ANDROID)
 endif()
 endif()
 
-if(ANDROID)
-if(QT_DEFAULT_MAJOR_VERSION EQUAL 6)
-    set(PLATFORM_SOURCES
-        utils_os_android_qt6.cpp
-        utils_os_android.h)
-
-    set(PLATFORM_LIBRARIES Qt::CorePrivate m)
-elseif(QT_DEFAULT_MAJOR_VERSION EQUAL 5)
-    set(PLATFORM_SOURCES
-        utils_os_android_qt5.cpp
-        utils_os_android.h)
-
-    find_package(Qt${QT_DEFAULT_MAJOR_VERSION} REQUIRED COMPONENTS AndroidExtra)
-    set(PLATFORM_LIBRARIES Qt::AndroidExtra m)
-endif()
-endif()
-
 if(WIN32)
     set(PLATFORM_SOURCES
         utils_os_windows.cpp
         utils_os_windows.h)
 endif()
 
-if(APPLE AND NOT IOS)
-    set(PLATFORM_SOURCES
-        utils_os_macos.mm
-        utils_os_macos.h
-        utils_os_macos_dock.mm
-        utils_os_macos_dock.h)
-
-    set(PLATFORM_LIBRARIES "-framework AppKit" m)
-endif()
-
-if(IOS)
-    set(PLATFORM_SOURCES
-        utils_os_ios.mm
-        utils_os_ios.h
-        utils_os_ios_notif.mm
-        utils_os_ios_notif.h)
-
-    find_package(Qt${QT_DEFAULT_MAJOR_VERSION} REQUIRED COMPONENTS Quick)
-    set(PLATFORM_LIBRARIES Qt::Quick)
-    set(PLATFORM_LIBRARIES Qt::GuiPrivate)
-    set(PLATFORM_LIBRARIES "-framework UIKit" m)
-    set(PLATFORM_LIBRARIES "-framework UserNotifications" m)                    # show notifications
-    #set(PLATFORM_LIBRARIES "-framework SystemConfiguration" m)                 # get WiFi SSID
-endif()
 
 ################################################################################
 

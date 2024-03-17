@@ -1,8 +1,8 @@
-import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 Item {
     id: datePicker

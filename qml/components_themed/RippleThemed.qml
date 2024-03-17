@@ -1,3 +1,3 @@
-import QtQuick.Controls.Material.impl as QQuickMaterial
+import QtQuick.Controls 2.15
 
-QQuickMaterial.Ripple {}
+

@@ -1,8 +1,8 @@
-import QtQuick
-import QtQuick.Layouts
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 Popup {
     id: popupDate
@@ -214,24 +214,24 @@ Popup {
 
             ////////
 
-            DayOfWeekRow {
-                id: dow
-                anchors.left: parent.left
-                anchors.leftMargin: 4
-                anchors.right: parent.right
-                anchors.rightMargin: 4
+//            DayOfWeekRow {
+//                id: dow
+//                anchors.left: parent.left
+//                anchors.leftMargin: 4
+//                anchors.right: parent.right
+//                anchors.rightMargin: 4
 
-                Layout.fillWidth: true
-                //locale: popupDate.locale
+//                Layout.fillWidth: true
+//                //locale: popupDate.locale
 
-                delegate: Text {
-                    text: model.shortName.substring(0, 1).toUpperCase()
-                    color: Theme.colorText
-                    font.bold: true
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
-            }
+//                delegate: Text {
+//                    text: model.shortName.substring(0, 1).toUpperCase()
+//                    color: Theme.colorText
+//                    font.bold: true
+//                    horizontalAlignment: Text.AlignHCenter
+//                    verticalAlignment: Text.AlignVCenter
+//                }
+//            }
 
             MonthGrid {
                 id: grid

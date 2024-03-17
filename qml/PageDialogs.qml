@@ -1,7 +1,7 @@
-import QtQuick
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 Flickable {
     contentWidth: -1
@@ -72,23 +72,23 @@ Flickable {
             source: ""
         }
 
-        ButtonWireframeIcon {
-            anchors.left: parent.left
-            anchors.leftMargin: Theme.componentMarginXL
-            anchors.right: parent.right
-            anchors.rightMargin: Theme.componentMarginXL
+//        ButtonWireframeIcon {
+//            anchors.left: parent.left
+//            anchors.leftMargin: Theme.componentMarginXL
+//            anchors.right: parent.right
+//            anchors.rightMargin: Theme.componentMarginXL
 
-            text: "Date"
-            fullColor: true
-            source: "qrc:/assets/icons_material/duotone-date_range-24px.svg"
+//            text: "Date"
+//            fullColor: true
+//            source: "qrc:/assets/icons_material/duotone-date_range-24px.svg"
 
-            PopupDate {
-                id: popupDate
-                onUpdateDate: (newdate) => { savethedate = newdate }
-            }
+//            PopupDate {
+//                id: popupDate
+//                onUpdateDate: (newdate) => { savethedate = newdate }
+//            }
 
-            onClicked: popupDate.openDate(savethedate)
-        }
+//            onClicked: popupDate.openDate(savethedate)
+//        }
 
         ButtonWireframeIcon {
             anchors.left: parent.left
@@ -105,7 +105,7 @@ Flickable {
                 //onUpdateTime: (newtime) => { savethedate = newtime }
             }
 
-            onClicked: popupTime.openTime(savethedate)
+            onClicked: popupTime.open()
         }
     }
 }

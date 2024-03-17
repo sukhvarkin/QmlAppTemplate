@@ -1,6 +1,6 @@
-import QtQuick
+import QtQuick 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 Item {
     id: mobileMenu

@@ -1,0 +1,5 @@
+/home/develop/Projects/QmlAppTemplate/src/thirdparty/build-AppUtils-Desktop-Debug/CMakeFiles/AppUtils.dir
+/home/develop/Projects/QmlAppTemplate/src/thirdparty/build-AppUtils-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/develop/Projects/QmlAppTemplate/src/thirdparty/build-AppUtils-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/develop/Projects/QmlAppTemplate/src/thirdparty/build-AppUtils-Desktop-Debug/CMakeFiles/AppUtils_autogen_timestamp_deps.dir
+/home/develop/Projects/QmlAppTemplate/src/thirdparty/build-AppUtils-Desktop-Debug/CMakeFiles/AppUtils_autogen.dir

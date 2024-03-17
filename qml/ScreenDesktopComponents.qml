@@ -1,10 +1,8 @@
-import QtQuick
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-import QtQuick.Effects
-import Qt5Compat.GraphicalEffects
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 Loader {
     id: screenDesktopComponents

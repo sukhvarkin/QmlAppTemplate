@@ -1,7 +1,7 @@
-import QtQuick
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 Rectangle {
     id: appSidebar
@@ -22,11 +22,11 @@ Rectangle {
         target: null
     }
 
-    CsdMac {
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
+//    CsdMac {
+//        anchors.top: parent.top
+//        anchors.topMargin: 0
+//        anchors.horizontalCenter: parent.horizontalCenter
+//    }
 
     ////////////////////////////////////////////////////////////////////////////
 

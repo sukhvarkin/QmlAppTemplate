@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQuick.Controls.impl 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Templates 2.15 as T
 
 import ThemeEngine 1.0
@@ -44,7 +44,7 @@ T.TextField {
 
     ////////////////
 
-    PlaceholderText {
+    Text {
         id: placeholder
         x: control.leftPadding
         y: control.topPadding

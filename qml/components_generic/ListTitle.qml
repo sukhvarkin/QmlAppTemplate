@@ -1,4 +1,4 @@
-import QtQuick
+import QtQuick 2.15
 
 import ThemeEngine 1.0
 

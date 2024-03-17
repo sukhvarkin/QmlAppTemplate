@@ -1,8 +1,8 @@
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Window
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Window 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 ApplicationWindow {
     id: appWindow
@@ -15,23 +15,9 @@ ApplicationWindow {
     property bool isPhone: false
     property bool isTablet: false
 
-    // Desktop stuff ///////////////////////////////////////////////////////////
+    width: 1280
+    height: 800
 
-    minimumWidth: 800
-    minimumHeight: 560
-
-    width: {
-        if (settingsManager.initialSize.width > 0)
-            return settingsManager.initialSize.width
-        else
-            return isHdpi ? 800 : 1280
-    }
-    height: {
-        if (settingsManager.initialSize.height > 0)
-            return settingsManager.initialSize.height
-        else
-            return isHdpi ? 560 : 720
-    }
     x: settingsManager.initialPosition.width
     y: settingsManager.initialPosition.height
     visibility: settingsManager.initialVisibility
@@ -236,15 +222,15 @@ ApplicationWindow {
         ScreenMainView {
             id: screenMainView
         }
+
         ScreenDesktopComponents {
             id: screenDesktopComponents
         }
+
         ScreenMobileComponents {
             id: screenMobileComponents
         }
-        ScreenFontInfos {
-            id: screenFontInfos
-        }
+
         ScreenHostInfos {
             id: screenHostInfos
         }
@@ -252,8 +238,13 @@ ApplicationWindow {
         ScreenSettings {
             id: screenSettings
         }
+
         ScreenAbout {
             id: screenAbout
+        }
+
+        ScreenFontInfos {
+            id: screenFontInfos
         }
 
         Component.onCompleted: {

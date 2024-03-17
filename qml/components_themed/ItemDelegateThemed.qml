@@ -1,10 +1,9 @@
-import QtQuick
-import QtQuick.Templates as T
-import QtQuick.Controls.impl
-import QtQuick.Controls.Material
-import QtQuick.Controls.Material.impl
+import QtQuick 2.15
+import QtQuick.Templates 2.15 as T
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 
-import ThemeEngine
+import ThemeEngine 1.0
 
 T.ItemDelegate {
     id: control
@@ -30,16 +29,16 @@ T.ItemDelegate {
 
         color: control.highlighted ? control.Material.listHighlightColor : "transparent"
 
-        RippleThemed {
-            width: parent.width
-            height: parent.height
+//        RippleThemed {
+//            width: parent.width
+//            height: parent.height
 
-            clip: visible
-            anchor: control
-            pressed: control.pressed
-            active: enabled && (control.down || control.visualFocus || control.hovered)
-            color: Qt.rgba(Theme.colorForeground.r, Theme.colorForeground.g, Theme.colorForeground.b, 0.5)
-        }
+//            clip: visible
+//            anchor: control
+//            pressed: control.pressed
+//            active: enabled && (control.down || control.visualFocus || control.hovered)
+//            color: Qt.rgba(Theme.colorForeground.r, Theme.colorForeground.g, Theme.colorForeground.b, 0.5)
+//        }
     }
 
     ////////////////

@@ -44,6 +44,7 @@ class UtilsApp : public QObject
 
     // Singleton
     static UtilsApp *instance;
+
     UtilsApp();
     ~UtilsApp();
 
@@ -68,8 +69,6 @@ public:
     static Q_INVOKABLE QString qtArchitecture();
     static Q_INVOKABLE bool qtIsDebug();
     static Q_INVOKABLE bool qtIsRelease();
-    static Q_INVOKABLE bool qtIsShared();
-    static Q_INVOKABLE bool qtIsStatic();
 
     Q_INVOKABLE QString qtRhiBackend();
     void setQuickWindow(QQuickWindow *window);

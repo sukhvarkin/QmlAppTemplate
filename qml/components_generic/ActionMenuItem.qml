@@ -1,10 +1,10 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.Controls.impl 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Templates 2.15 as T
 
-//import QtGraphicalEffects 1.15 // Qt5
-import Qt5Compat.GraphicalEffects // Qt6
+import QtGraphicalEffects 1.15 // Qt5
+//
 
 import ThemeEngine 1.0
 
@@ -47,13 +47,13 @@ T.Button {
             //Behavior on opacity { OpacityAnimator { duration: 233 } }
         }
 
-        RippleThemed {
-            anchors.fill: parent
-            clip: visible
-            pressed: control.down
-            active: enabled && control.down
-            color: Qt.rgba(Theme.colorForeground.r, Theme.colorForeground.g, Theme.colorForeground.b, 0.66)
-        }
+//        RippleThemed {
+//            anchors.fill: parent
+//            clip: visible
+//            pressed: control.down
+//            active: enabled && control.down
+//            color: Qt.rgba(Theme.colorForeground.r, Theme.colorForeground.g, Theme.colorForeground.b, 0.66)
+//        }
 
         layer.enabled: true
         layer.effect: OpacityMask {

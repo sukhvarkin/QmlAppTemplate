@@ -44,10 +44,6 @@
 
 int main(int argc, char *argv[])
 {
-    // Couple of debug stuff you can enable
-    //qputenv("QSG_INFO", "1");               // print Qt Scene Graph info
-    //qputenv("QT_QPA_EGLFS_DEBUG", "1");     // print Qt Platform Abstraction EGL debug info
-    //qputenv("QT_DEBUG_PLUGINS", "1");       // print Qt plugins info
 
 #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
     // NVIDIA driver suspend&resume hack
@@ -56,24 +52,19 @@ int main(int argc, char *argv[])
     QSurfaceFormat::setDefaultFormat(format);
 #endif
 
-    // GUI application /////////////////////////////////////////////////////////
-
     SingleApplication app(argc, argv, false);
 
     // Application name
     app.setApplicationName("QmlAppTemplate");
     app.setApplicationDisplayName("QmlAppTemplate");
-    app.setOrganizationName("emeric");
-    app.setOrganizationDomain("emeric");
+    app.setOrganizationName("IPG Photonics");
+    app.setOrganizationDomain("ipg");
 
-#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS)
-    // Application icon
     QIcon appIcon(":/assets/logos/logo.svg");
     app.setWindowIcon(appIcon);
-#endif
 
     // Init app components
-    SettingsManager *sm = SettingsManager::getInstance();
+    auto sm = SettingsManager::getInstance();
     if (!sm)
     {
         qWarning() << "Cannot init app components!";
@@ -81,10 +72,11 @@ int main(int argc, char *argv[])
     }
 
     // Init generic utils
-    UtilsApp *utilsApp = UtilsApp::getInstance();
-    UtilsScreen *utilsScreen = UtilsScreen::getInstance();
-    UtilsSysInfo *utilsSysinfo = UtilsSysInfo::getInstance();
-    UtilsLanguage *utilsLanguage = UtilsLanguage::getInstance();
+    auto utilsApp = UtilsApp::getInstance();
+    auto utilsScreen = UtilsScreen::getInstance();
+    auto utilsSysinfo = UtilsSysInfo::getInstance();
+    auto utilsLanguage = UtilsLanguage::getInstance();
+
     if (!utilsScreen || !utilsApp || !utilsLanguage)
     {
         qWarning() << "Cannot init generic utils!";
@@ -97,9 +89,6 @@ int main(int argc, char *argv[])
     // ThemeEngine
     qmlRegisterSingletonType(QUrl("qrc:/qml/ThemeEngine.qml"), "ThemeEngine", 1, 0, "Theme");
 
-    // Force QtQuick components style? // Some styles are only available on target OS
-    // Basic // Fusion // Imagine // macOS // iOS // Material // Universal // Windows
-    //QQuickStyle::setStyle("Universal");
 
     MobileUI::registerQML();
 
@@ -113,14 +102,8 @@ int main(int argc, char *argv[])
     engine_context->setContextProperty("utilsScreen", utilsScreen);
     engine_context->setContextProperty("utilsSysinfo", utilsSysinfo);
 
-    // Load the main view
-#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS) || defined(FORCE_MOBILE_UI)
-    //ShareUtils *mShareUtils = new ShareUtils();
-    //engine_context->setContextProperty("utilsShare", mShareUtils);
-    engine.load(QUrl(QStringLiteral("qrc:/qml/MobileApplication.qml")));
-#else
     engine.load(QUrl(QStringLiteral("qrc:/qml/DesktopApplication.qml")));
-#endif
+
     if (engine.rootObjects().isEmpty())
     {
         qWarning() << "Cannot init QmlApplicationEngine!";
@@ -130,33 +113,19 @@ int main(int argc, char *argv[])
     // For i18n retranslate
     utilsLanguage->setQmlEngine(&engine);
 
-    // app info
-    utilsApp->setQuickWindow(qobject_cast<QQuickWindow *>(engine.rootObjects().value(0)));
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().value(0));
+    if (!window) {
+        return EXIT_FAILURE;
+    }
 
-#if !defined(Q_OS_ANDROID) && !defined(Q_OS_IOS) // desktop section
+    utilsApp->setQuickWindow(window);
 
-    // QQuickWindow must be valid at this point
-    QQuickWindow *window = qobject_cast<QQuickWindow *>(engine.rootObjects().value(0));
-    if (!window) return EXIT_FAILURE;
-
-    // React to secondary instances
     QObject::connect(&app, &SingleApplication::instanceStarted, window, &QQuickWindow::show);
     QObject::connect(&app, &SingleApplication::instanceStarted, window, &QQuickWindow::raise);
 
-#if defined(Q_OS_MACOS)
-    // Dock
-    MacOSDockHandler *dockIconHandler = MacOSDockHandler::getInstance();
-    QObject::connect(dockIconHandler, &MacOSDockHandler::dockIconClicked, window, &QQuickWindow::show);
-    QObject::connect(dockIconHandler, &MacOSDockHandler::dockIconClicked, window, &QQuickWindow::raise);
-#endif
-
-#endif // desktop section
-
-#if defined(Q_OS_ANDROID)
-    QNativeInterface::QAndroidApplication::hideSplashScreen(333);
-#endif
 
     return app.exec();
+
 }
 
 /* ************************************************************************** */

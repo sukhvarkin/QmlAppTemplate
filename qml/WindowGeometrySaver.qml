@@ -1,7 +1,7 @@
-import QtCore
-import QtQuick
-import QtQuick.Window
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
+import Qt.labs.settings 1.0
 
 Item {
     // This code should only run for desktop windowed applications.

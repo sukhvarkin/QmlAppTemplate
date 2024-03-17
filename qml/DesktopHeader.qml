@@ -59,6 +59,7 @@ Rectangle {
     }
 
     Text { // title
+        id: titleText
         anchors.left: parent.left
         anchors.leftMargin: 64
         anchors.verticalCenter: parent.verticalCenter
@@ -68,6 +69,14 @@ Rectangle {
         font.bold: true
         font.pixelSize: Theme.fontSizeHeader
         color: Theme.colorHeaderContent
+    }
+
+    FpsMonitor {
+        anchors.left: titleText.right
+        anchors.leftMargin: 64
+        anchors.verticalCenter: titleText.verticalCenter
+
+        visible: wideMode
     }
 
     ////////////////////////////////////////////////////////////////////////////

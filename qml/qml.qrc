@@ -4,7 +4,6 @@
         <file>DesktopHeader.qml</file>
         <file>DesktopSidebar.qml</file>
         <file>ScreenMainView.qml</file>
-        <file>ScreenMobileComponents.qml</file>
         <file>ScreenDesktopComponents.qml</file>
         <file>ScreenFontInfos.qml</file>
         <file>ScreenHostInfos.qml</file>

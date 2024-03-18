@@ -11,9 +11,6 @@ ApplicationWindow {
 
     property bool isHdpi: (utilsScreen.screenDpi >= 128 || utilsScreen.screenPar >= 2.0)
     property bool isDesktop: true
-    property bool isMobile: false
-    property bool isPhone: false
-    property bool isTablet: false
 
     width: 1280
     height: 800
@@ -55,9 +52,6 @@ ApplicationWindow {
         function onBackButtonClicked() {
             backAction()
         }
-        function onRightMenuClicked() {
-            //
-        }
 
         function onMenuComponentsClicked() { screenDesktopComponents.loadScreen() }
         function onMenuSettingsClicked() { screenSettings.loadScreen() }
@@ -93,63 +87,7 @@ ApplicationWindow {
     // User generated events handling //////////////////////////////////////////
 
     function backAction() {
-        if (appContent.state === "MobileComponents") {
-            screenMobileComponents.backAction()
-        } else {
-            screenDesktopComponents.loadScreen()
-        }
-    }
-    function forwardAction() {
-        //
-    }
-    function deselectAction() {
-        //
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        z: 99
-        acceptedButtons: Qt.BackButton | Qt.ForwardButton
-        onClicked: (mouse) => {
-            if (mouse.button === Qt.BackButton) {
-                backAction()
-            } else if (mouse.button === Qt.ForwardButton) {
-                forwardAction()
-            }
-        }
-    }
-
-    Shortcut {
-        sequences: [StandardKey.Back, StandardKey.Backspace]
-        onActivated: backAction()
-    }
-    Shortcut {
-        sequences: [StandardKey.Forward]
-        onActivated: forwardAction()
-    }
-    Shortcut {
-        sequences: [StandardKey.Refresh]
-        //onActivated: //
-    }
-    Shortcut {
-        sequence: "Ctrl+F5"
-        //onActivated: //
-    }
-    Shortcut {
-        sequences: [StandardKey.Deselect, StandardKey.Cancel]
-        onActivated: deselectAction()
-    }
-    Shortcut {
-        sequence: StandardKey.Preferences
-        onActivated: screenSettings.loadScreen()
-    }
-    Shortcut {
-        sequences: [StandardKey.Close]
-        onActivated: appWindow.close()
-    }
-    Shortcut {
-        sequence: StandardKey.Quit
-        onActivated: appWindow.exit(0)
+            screenMainView.loadScreen()
     }
 
     // UI sizes ////////////////////////////////////////////////////////////////
@@ -157,40 +95,10 @@ ApplicationWindow {
     property bool headerUnicolor: (Theme.colorHeader === Theme.colorBackground)
     property bool sidebarUnicolor: (Theme.colorSidebar === Theme.colorBackground)
 
-    property bool singleColumn: {
-        if (isMobile) {
-            if (screenOrientation === Qt.PortraitOrientation ||
-                (isTablet && width < 480)) { // can be a 2/3 split screen on tablet
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return (appWindow.width < appWindow.height)
-        }
-    }
-
-    property bool wideMode: (isDesktop && width >= 560) || (isTablet && width >= 480)
+    property bool wideMode: (isDesktop && width >= 560)
     property bool wideWideMode: (width >= 640)
 
-    // Menubar /////////////////////////////////////////////////////////////////
-/*
-    menuBar: MenuBar {
-        id: appMenubar
-        Menu {
-            title: qsTr("File")
-            MenuItem {
-                text: qsTr("Do nothing")
-                onTriggered: console.log("Do nothing action triggered");
-            }
-            MenuItem {
-                text: qsTr("&Exit")
-                onTriggered: Qt.quit();
-            }
-        }
-    }
-*/
-    // QML /////////////////////////////////////////////////////////////////////
+    property bool singleColumn: (appWindow.width < appWindow.height)
 
     DesktopSidebar {
         id: appSidebar
@@ -199,13 +107,15 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.bottom: parent.bottom
+
+        visible: false
     }
 
     DesktopHeader {
         id: appHeader
 
         anchors.top: parent.top
-        anchors.left: appSidebar.right
+        anchors.left: parent.left
         anchors.right: parent.right
     }
 
@@ -213,7 +123,7 @@ ApplicationWindow {
         id: appContent
 
         anchors.top: appHeader.bottom
-        anchors.left: appSidebar.right
+        anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 
@@ -225,10 +135,6 @@ ApplicationWindow {
 
         ScreenDesktopComponents {
             id: screenDesktopComponents
-        }
-
-        ScreenMobileComponents {
-            id: screenMobileComponents
         }
 
         ScreenHostInfos {
@@ -248,11 +154,7 @@ ApplicationWindow {
         }
 
         Component.onCompleted: {
-            screenDesktopComponents.loadScreen()
-        }
-
-        onStateChanged: {
-            //
+           // screenDesktopComponents.loadScreen()
         }
 
         // Initial state
@@ -263,7 +165,6 @@ ApplicationWindow {
                 name: "MainView"
                 PropertyChanges { target: screenMainView; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenDesktopComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenMobileComponents; visible: false; enabled: false; }
                 PropertyChanges { target: screenFontInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenHostInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
@@ -273,17 +174,6 @@ ApplicationWindow {
                 name: "DesktopComponents"
                 PropertyChanges { target: screenMainView; visible: false; enabled: false; }
                 PropertyChanges { target: screenDesktopComponents; visible: true; enabled: true; focus: true; }
-                PropertyChanges { target: screenMobileComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenFontInfos; visible: false; enabled: false; }
-                PropertyChanges { target: screenHostInfos; visible: false; enabled: false; }
-                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
-                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
-            },
-            State {
-                name: "MobileComponents"
-                PropertyChanges { target: screenMainView; visible: false; enabled: false; }
-                PropertyChanges { target: screenDesktopComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenMobileComponents; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenFontInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenHostInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
@@ -293,7 +183,6 @@ ApplicationWindow {
                 name: "FontInfos"
                 PropertyChanges { target: screenMainView; visible: false; enabled: false; }
                 PropertyChanges { target: screenDesktopComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenMobileComponents; visible: false; enabled: false; }
                 PropertyChanges { target: screenFontInfos; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenHostInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
@@ -303,7 +192,6 @@ ApplicationWindow {
                 name: "HostInfos"
                 PropertyChanges { target: screenMainView; visible: false; enabled: false; }
                 PropertyChanges { target: screenDesktopComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenMobileComponents; visible: false; enabled: false; }
                 PropertyChanges { target: screenFontInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenHostInfos; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
@@ -313,7 +201,6 @@ ApplicationWindow {
                 name: "Settings"
                 PropertyChanges { target: screenMainView; visible: false; enabled: false; }
                 PropertyChanges { target: screenDesktopComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenMobileComponents; visible: false; enabled: false; }
                 PropertyChanges { target: screenFontInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenHostInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: true; enabled: true; focus: true; }
@@ -323,7 +210,6 @@ ApplicationWindow {
                 name: "About"
                 PropertyChanges { target: screenMainView; visible: false; enabled: false; }
                 PropertyChanges { target: screenDesktopComponents; visible: false; enabled: false; }
-                PropertyChanges { target: screenMobileComponents; visible: false; enabled: false; }
                 PropertyChanges { target: screenFontInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenHostInfos; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }

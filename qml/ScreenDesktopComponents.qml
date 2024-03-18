@@ -61,7 +61,6 @@ Loader {
                     anchors.left: parent.left
                     anchors.leftMargin: 24
                     anchors.verticalCenter: parent.verticalCenter
-                    visible: !singleColumn
                     spacing: 16
 
                     Text {
@@ -77,7 +76,6 @@ Loader {
 
                 Row { // middle
                     anchors.centerIn: parent
-                    visible: !singleColumn
                     spacing: 16
 
                     ButtonCompactable {

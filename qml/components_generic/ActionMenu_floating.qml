@@ -16,7 +16,7 @@ T.Popup {
 
     modal: true
     dim: false
-    focus: isMobile
+    focus: false
     closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutside
     //parent: Overlay.overlay
 

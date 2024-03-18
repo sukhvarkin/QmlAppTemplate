@@ -184,7 +184,7 @@ Loader {
                 anchors.right: parent.right
                 anchors.rightMargin: screenPaddingRight + Theme.componentMargin
 
-                visible: isMobile
+                visible: false
 
                 model: ListModel {
                     id: cbAppTheme

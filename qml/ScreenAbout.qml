@@ -77,7 +77,7 @@ Loader {
                         anchors.verticalCenterOffset: 2
 
                         Text {
-                            text: "QmlAppTemplate"
+                            text: "Bravo"
                             color: Theme.colorText
                             font.pixelSize: 28
                         }
@@ -128,7 +128,7 @@ Loader {
 
                         text: qsTr("GitHub")
                         source: "qrc:/assets/logos/github.svg"
-                        onClicked: Qt.openUrlExternally("https://github.com/emericg/QmlAppTemplate")
+                        onClicked: Qt.openUrlExternally("https://github.com/emericg/Bravo")
                     }
                 }
 
@@ -205,7 +205,7 @@ Loader {
                 text: qsTr("Rate the application")
                 source: "qrc:/assets/icons_material/baseline-stars-24px.svg"
                 indicatorSource: "qrc:/assets/icons_material/duotone-launch-24px.svg"
-                onClicked: Qt.openUrlExternally("https://github.com/emericg/QmlAppTemplate")
+                onClicked: Qt.openUrlExternally("https://github.com/emericg/Bravo")
             }
 
             ListItemClickable { // tutorial

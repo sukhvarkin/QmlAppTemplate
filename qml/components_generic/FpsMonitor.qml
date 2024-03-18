@@ -3,8 +3,9 @@ import QtQuick.Window 2.15
 
 Item {
     id: control
-    height: 24
-    z: 100
+
+    implicitWidth: 160
+    implicitHeight: 24
 
     property int frameCounter: 0
     property int frameCounterAvg: 0
@@ -21,6 +22,7 @@ Item {
     Row {
         id: rowrow
         anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
 
         IconSvg {
             anchors.verticalCenter: parent.verticalCenter

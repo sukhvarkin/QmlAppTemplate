@@ -11,7 +11,7 @@ Rectangle {
     anchors.rightMargin: singleColumn ? 0 : Theme.componentMargin
 
     height: Theme.componentHeightL
-    radius: singleColumn ? 0 : Theme.componentRadius
+    radius: Theme.componentRadius
     z: 2
 
     color: backgroundColor

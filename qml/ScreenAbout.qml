@@ -17,13 +17,6 @@ Loader {
         appHeader.headerTitle = qsTr("About")
     }
 
-    function backAction() {
-        if (screenAbout.status === Loader.Ready)
-            screenAbout.item.backAction()
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-
     active: false
     asynchronous: false
 

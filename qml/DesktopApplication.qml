@@ -62,13 +62,10 @@ ApplicationWindow {
         target: Qt.application
         function onStateChanged() {
             switch (Qt.application.state) {
-                case Qt.ApplicationActive:
-                    //console.log("Qt.ApplicationActive")
-
-                    // Check if we need an 'automatic' theme change
-                    Theme.loadTheme(settingsManager.appTheme)
-
-                    break
+            case Qt.ApplicationActive:
+                // Check if we need an 'automatic' theme change
+                Theme.loadTheme(settingsManager.appTheme)
+                break
             }
         }
     }
@@ -78,16 +75,16 @@ ApplicationWindow {
     }
 
     onClosing: (close) =>  {
-        if (Qt.platform.os === "osx") {
-            close.accepted = false
-            appWindow.hide()
-        }
-    }
+                   if (Qt.platform.os === "osx") {
+                       close.accepted = false
+                       appWindow.hide()
+                   }
+               }
 
     // User generated events handling //////////////////////////////////////////
 
     function backAction() {
-            screenMainView.loadScreen()
+        screenMainView.loadScreen()
     }
 
     // UI sizes ////////////////////////////////////////////////////////////////

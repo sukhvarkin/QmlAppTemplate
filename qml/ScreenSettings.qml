@@ -16,13 +16,6 @@ Loader {
         appHeader.headerTitle = qsTr("Settings")
     }
 
-    function backAction() {
-        if (screenSettings.status === Loader.Ready)
-            screenSettings.item.backAction()
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-
     active: false
     asynchronous: false
 

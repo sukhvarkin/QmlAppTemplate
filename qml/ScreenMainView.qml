@@ -9,6 +9,7 @@ Item {
 
     function loadScreen() {
         appContent.state = "MainView"
+        appHeader.headerTitle = qsTr("Home")
     }
 
     function backAction() {

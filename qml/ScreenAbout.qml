@@ -14,6 +14,7 @@ Loader {
 
         // change screen
         appContent.state = "About"
+        appHeader.headerTitle = qsTr("About")
     }
 
     function backAction() {

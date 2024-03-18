@@ -154,7 +154,7 @@ ApplicationWindow {
         }
 
         Component.onCompleted: {
-           // screenDesktopComponents.loadScreen()
+            screenMainView.loadScreen()
         }
 
         // Initial state

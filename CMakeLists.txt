@@ -12,6 +12,8 @@ set(APP_NAME ${CMAKE_PROJECT_NAME})
 set(APP_VERSION ${CMAKE_PROJECT_VERSION})
 set(APP_VERSION_CODE ${TIMESTAMP})
 
+include(i18n/module.cmake)
+
 ################################################################################
 
 message(STATUS "[CMAKE] CMAKE_VERSION               = ${CMAKE_VERSION}")
@@ -34,8 +36,8 @@ add_executable(${CMAKE_PROJECT_NAME}
     src/main.cpp
     qml/qml.qrc
     qml/components.qrc
-    i18n/i18n.qrc
     assets/assets.qrc
+    ${TRANSLATINS_QRC_FILE}
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC src/thirdparty/)

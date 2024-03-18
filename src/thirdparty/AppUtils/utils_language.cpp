@@ -135,7 +135,7 @@ void UtilsLanguage::loadLanguage(const QString &lng)
 
     m_appTranslator = new QTranslator;
     if (m_qtTranslator)
-        if (m_appTranslator->load(":/i18n/" + m_appName + "_" + locale_str_full + ".qm"))
+        if (m_appTranslator->load(":/i18n/" + locale_str_full + ".qm"))
             m_qt_app->installTranslator(m_appTranslator);
 
     // Install new language

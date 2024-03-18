@@ -13,6 +13,7 @@ Loader {
 
         // change screen
         appContent.state = "Settings"
+        appHeader.headerTitle = qsTr("Settings")
     }
 
     function backAction() {

@@ -22,6 +22,10 @@
 int main(int argc, char *argv[])
 {
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
+
 #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
     // NVIDIA driver suspend&resume hack
     auto format = QSurfaceFormat::defaultFormat();
@@ -34,8 +38,8 @@ int main(int argc, char *argv[])
     // Application name
     app.setApplicationName("Bravo");
     app.setApplicationDisplayName("Bravo");
-    app.setOrganizationName("IPG");
-    app.setOrganizationDomain("IPG");
+    app.setOrganizationName("ipg");
+    app.setOrganizationDomain("ipg");
 
     QIcon appIcon(":/assets/logos/logo.svg");
     app.setWindowIcon(appIcon);

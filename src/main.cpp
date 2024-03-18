@@ -32,10 +32,10 @@ int main(int argc, char *argv[])
     SingleApplication app(argc, argv, false);
 
     // Application name
-    app.setApplicationName("QmlAppTemplate");
-    app.setApplicationDisplayName("QmlAppTemplate");
-    app.setOrganizationName("emeric");
-    app.setOrganizationDomain("emeric");
+    app.setApplicationName("Bravo");
+    app.setApplicationDisplayName("Bravo");
+    app.setOrganizationName("IPG");
+    app.setOrganizationDomain("IPG");
 
     QIcon appIcon(":/assets/logos/logo.svg");
     app.setWindowIcon(appIcon);
